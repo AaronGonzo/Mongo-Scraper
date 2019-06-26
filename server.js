@@ -26,8 +26,11 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 
+const MONGODB_URI =
+  process.env.MONGODB_URI || "mongodb://localhost/soccerscraper";
+
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/soccerscraper", {
+mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true
 });
 
