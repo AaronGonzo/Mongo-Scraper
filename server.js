@@ -36,6 +36,16 @@ mongoose.connect(MONGODB_URI, {
 
 // Routes
 // A GET route for scraping the echoJS website
+
+app.get("/", function(req, res) {
+  db.Article.find({})
+    .then(function(dbArticle) {
+      res.json(dbArticle);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+});
 app.get("/scrape", function(req, res) {
   console.log("inside scrape route");
   // First, we grab the body of the html with axios
